@@ -1,0 +1,5 @@
+rootProject.name='Thread'
+include ':app'
+include ':runonuithread'
+include ':handler'
+include ':asynctask'
