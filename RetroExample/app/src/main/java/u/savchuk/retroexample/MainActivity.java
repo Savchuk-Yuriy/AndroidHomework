@@ -45,24 +45,26 @@ public class MainActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         RetrofitInterface retrofitInterface = retrofit.create(RetrofitInterface.class);
-        Call<List<ApiObject>> call = retrofitInterface.getAllPost();
-        call.enqueue(new Callback<List<ApiObject>>() {
+        //for (int i = 0; i <= 4; i++ )
+        Call<ApiObject> call = retrofitInterface.getAllPost();
+        call.enqueue(new Callback<ApiObject>()
+        {
 
             @Override
-            public void onResponse(Call<List<ApiObject>> call, Response<List<ApiObject>> response) {
+            public void onResponse(Call<ApiObject> call, Response<ApiObject> response) {
                 pd.dismiss();
-                List<ApiObject> apiObjects = response.body();
+                ApiObject apiObjects = response.body();
                 assert apiObjects != null;
-                for (ApiObject u : apiObjects) {
-                    ApiObject object = new ApiObject(u.getUserId(), u.getId(), u.getTitle(), u.getCompleted());
-                    apiObjectList.add(object);
+                for (ApiObject u : apiObjects) { // не понимаю чего ему надо и как помочь
+                ApiObject object = new ApiObject(u.getUserId(), u.getId(), u.getTitle(), u.getCompleted());
+                apiObjectList.add(object);
                 }
                 userRecyclerViewAdapter = new RecyclerViewAdapter(getApplicationContext(),apiObjectList);
                 recyclerView.setAdapter(userRecyclerViewAdapter);
             }
 
             @Override
-            public void onFailure(Call<List<ApiObject>> call, Throwable t) {
+            public void onFailure(Call<ApiObject> call, Throwable t) {
                 Toast.makeText(getApplicationContext(),t.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });

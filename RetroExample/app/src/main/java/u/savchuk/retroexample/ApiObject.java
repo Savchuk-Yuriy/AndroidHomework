@@ -2,8 +2,6 @@ package u.savchuk.retroexample;
 
 //POJO файл для преобразования из JSON строки в реальный Java обьект
 
-
-
 public class ApiObject {
 
     private Integer userId;
