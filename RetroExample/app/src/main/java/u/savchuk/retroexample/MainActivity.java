@@ -55,11 +55,11 @@ public class MainActivity extends AppCompatActivity {
                 pd.dismiss();
                 ApiObject apiObjects = response.body();
                 assert apiObjects != null;
-                for (ApiObject u : apiObjects) { // не понимаю чего ему надо и как помочь
-                ApiObject object = new ApiObject(u.getUserId(), u.getId(), u.getTitle(), u.getCompleted());
-                apiObjectList.add(object);
-                }
-                userRecyclerViewAdapter = new RecyclerViewAdapter(getApplicationContext(),apiObjectList);
+                //ApiObject u : apiObjects) { // не понимаю чего ему надо и как помочь
+                //ApiObject object = new ApiObject(u.getUserId(), u.getId(), u.getTitle(), u.getCompleted());
+                //apiObjectList.add(object);
+                //}
+                userRecyclerViewAdapter = new RecyclerViewAdapter(getApplicationContext(),apiObjects);
                 recyclerView.setAdapter(userRecyclerViewAdapter);
             }
 

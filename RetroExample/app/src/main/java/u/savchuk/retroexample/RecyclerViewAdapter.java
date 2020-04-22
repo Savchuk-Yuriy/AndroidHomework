@@ -8,13 +8,15 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
     private Context context;
-    private List<ApiObject> apiObjectList;
+    //ArrayList<ApiObject> apiObjectsList = new ArrayList<>();
+    private ApiObject apiObjectList;
 
-    public RecyclerViewAdapter(Context context, List<ApiObject> apiObjects) {
+    public RecyclerViewAdapter(Context context, ApiObject apiObjects) {
         this.context = context;
         this.apiObjectList = apiObjects;
     }
@@ -27,7 +29,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        ApiObject apiObject = apiObjectList.get(position);
+        ApiObject apiObject = apiObjectList;
         holder.userId.setText(apiObject.getUserId());
         holder.id.setText(apiObject.getId());
         holder.title.setText(apiObject.getTitle());
@@ -36,11 +38,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public int getItemCount() {
-        return apiObjectList.size();
+        return 1;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        private TextView userId, id, title, completed;
+        TextView userId, id, title, completed;
 
         public MyViewHolder(View itemView) {
             super(itemView);
